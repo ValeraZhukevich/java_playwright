@@ -5,6 +5,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static utils.PropertiesReader.getProperty;
 
 @Feature("Search on onliner.by")
 public class OnlinerPage {
@@ -17,7 +18,7 @@ public class OnlinerPage {
 
     @Step("Open Onliner.by")
     public void openOnliner() {
-        page.navigate("https://onliner.by");
+        page.navigate(getProperty("gui.host"));
     }
 
     @Step("Type '{product}' in search field")

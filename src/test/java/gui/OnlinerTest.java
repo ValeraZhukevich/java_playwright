@@ -1,11 +1,11 @@
 package gui;
 
-import com.microsoft.playwright.*;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pages.OnlinerPage;
 
+@Tag("gui")
 @Feature("Onliner tests")
 public class OnlinerTest extends OnlinerBaseTest {
 
