@@ -15,6 +15,7 @@ import pojo.Character;
 
 import java.util.List;
 
+import static io.qameta.allure.Allure.addAttachment;
 import static utils.PropertiesReader.getProperty;
 
 @Tag("api")
@@ -30,6 +31,7 @@ public class CharacterTest extends BaseApiTest {
                         .setQueryParam("name", name));
         Assertions.assertEquals(200, response.status());
         String jsonString = response.text();
+        addAttachment("Response", jsonString);
         JsonNode node = objectMapper.readTree(jsonString);
         String arrayString = node.get("results").toString();
         List<Character> characters = objectMapper.readValue(arrayString, new TypeReference<>() {});

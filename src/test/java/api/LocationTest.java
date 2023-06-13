@@ -14,6 +14,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import pojo.Location;
 
+import static io.qameta.allure.Allure.addAttachment;
 import static utils.PropertiesReader.getProperty;
 
 @Tag("api")
@@ -31,6 +32,7 @@ public class LocationTest extends BaseApiTest {
         APIResponse response = request.get(getProperty("location") + id);
         Assertions.assertEquals(200, response.status());
         String jsonString = response.text();
+        addAttachment("Response", jsonString);
         Location location = objectMapper.readValue(jsonString, Location.class);
 
         Assertions.assertEquals(name, location.getName());

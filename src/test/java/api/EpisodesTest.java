@@ -15,6 +15,7 @@ import pojo.Episode;
 import java.util.ArrayList;
 import java.util.List;
 
+import static io.qameta.allure.Allure.addAttachment;
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
 import static utils.PropertiesReader.getProperty;
@@ -35,7 +36,7 @@ public class EpisodesTest extends BaseApiTest {
                     RequestOptions.create()
                             .setQueryParam("page", page));
             Assertions.assertEquals(200, response.status());
-            System.out.println(response.text());
+            addAttachment("Response", response.text());
             node = objectMapper.readTree(response.text());
             nextUrl = node.get("info").get("next").toString();
             String arrayString = node.get("results").toString();
